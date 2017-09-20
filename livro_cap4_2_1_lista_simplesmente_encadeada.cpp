@@ -83,7 +83,8 @@ struct nodo * maior(struct nodo *inicio) {
 			aux = aux->proximo;
 		}
 		return p;
-	} else return NULL;
+	} else
+        return NULL;
 }
 
 void mostra_lista(struct nodo *inicio) {
@@ -98,36 +99,61 @@ void mostra_lista(struct nodo *inicio) {
 }
 
 void libera_lista(struct nodo **inicio, struct nodo **fim) {
+    struct nodo *aux;
+    aux = *inicio;
+    while(aux != NULL) {
+        *inicio = (*inicio)->proximo;
+        free(aux);
+        aux = *inicio;
+    }
+    *fim = NULL;
 }
 
 int remove_esquerda(struct nodo **inicio, struct nodo **fim, int *status) {
+    struct nodo *aux;
+    int valor = 0;
+    if(*inicio == NULL) {
+        // Se a lista estiver vazia.
+        *status = 0;
+    } else {
+        aux = *inicio;
+        valor = aux->dados;
+        *inicio = (*inicio)->proximo;
+        if(*inicio == NULL)
+            *fim = NULL;
+        free(aux);
+        *status = 1;
+    }
+    return valor;
 }
 
 int main() {
 	struct nodo *ptri, *ptrf;
 	int x, num, ok;
-	
+
 	// Chama procedimento para criar a lista.
 	cria_lista(&ptri, &ptrf);
-	
+
 	// Lê valores do usuário e armazena na lista.
 	for(x = 1; x <= max; x++) {
 		printf("Digite um valor qualquer: ");
 		scanf("%i", &num); fflush(stdin);
 		insere_esquerda(&ptri, &ptrf, num, &ok);
-		if (ok == 0) printf("Problema na alocação de memória !!!\n");
+		if (ok == 0)
+			printf("Problema na alocação de memória !!!\n");
 	}
-	
+
 	// Retira o primeiro nodo da lista e escreve na tela.
 	printf("Elemento %i foi removido!!!\n", remove_esquerda(&ptri, &ptrf, &ok));
-	
+
 	// Lê novo valor para inserir na lista.
 	printf("Digite um valor qualquer: ");
 	scanf("%i", &num); fflush(stdin);
-	
+
 	// Insere novo elemento na lista.
 	insere_antes_de_k(&ptri, maior(ptri), num, &ok);
-	if (ok == 0) printf("Problema na alocação de memória !!!\n");
+	if (ok == 0)
+		printf("Problema na alocação de memória !!!\n");
 	getch();
 	mostra_lista(ptri);
 	scanf("%i", &num);
