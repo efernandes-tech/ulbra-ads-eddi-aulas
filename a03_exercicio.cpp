@@ -165,6 +165,10 @@ void libera_lista (struct nodo **lista)
 
 
 
+
+
+
+
 void inseri_4nodo(struct nodo **inicio, struct nodo **fim, int valor, int *sinal) {
 	struct nodo *p, *aux;
 	int x;
@@ -190,27 +194,29 @@ void inseri_4nodo(struct nodo **inicio, struct nodo **fim, int valor, int *sinal
 	}
 }
 
-void inseri_antes_5nodo(struct nodo **lista, int valor, int *sinal) {
+
+void inseri_5elemento(struct nodo **lista, int valor, int *sinal){
 	struct nodo *p, *aux;
 	int x;
-	if (conta(*lista) < 5) {
+		if(conta(*lista) < 5)
 		sinal =0;
-	} else {
-		p = (struct nodo *) malloc(sizeof(struct nodo));
-		if ( p == NULL) {
-			sinal = 0;
-		} else {
-			p->dados = valor;
-			aux = *lista;
-			for(x=1; x<3; x++){
-				aux = aux->proximo;
-			}
-			p->proximo = aux->proximo;
-			aux->proximo = p;
-			*sinal = 1;		
-		}			
+			else
+			p = (struct nodo *) malloc(sizeof(struct nodo));
+		if( p == NULL)
+		sinal = 0;
+			else{
+				p->dados = valor;
+				aux = *lista;
+					for(x=1; x<3; x++){
+						aux = aux->proximo;
+						}
+				p->proximo = aux->proximo;
+				aux->proximo = p;
+				*sinal = 1;		
+				}
+				
 	}
-}
+
 
 
 
@@ -222,6 +228,10 @@ int main()
   int num, ok;  // variavel global que representa o sinal 
 
   struct nodo *l1i=NULL, *l1f=NULL, *lk=NULL;
+
+  // l1i = inicio da lista
+  // l1f = final da lista
+  // lk = lista que armazena o endereco do nodo K
 
   /* Este trecho do programa serve para que o usuario digite varios valores (ate digitar 0)
      que serao armazenados na lista (insercao no inicio da lista).
@@ -273,36 +283,43 @@ int main()
    //libera_lista(&l1i);
    //getch();
   }
-
-
-
-
-
-	printf("\nInforme outro valor: (insercao no 4): ");
-	scanf("%d",&num);
-	if (num != 0) {
-		inseri_4nodo(&l1i, &l1f, num, &ok);
-		if (ok == 0)
-	    	printf("\nErro de alocacao de memoria...");
-		mostra_lista(l1i);
-		getch();
-		//libera_lista(&l1i);
-		//getch();
-	}
-
-	/*
-	printf("\nInforme outro valor: (insercao antes do 5): ");
-	scanf("%d",&num);
-	if (num != 0) {
-	   inseri_antes_5nodo(&l1i, num, &ok);
-
-		if (ok == 0)
-			printf("\nErro de alocacao de memoria...");
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ /* printf("\nInforme outro valor: (insercao no 4): ");
+  scanf("%d",&num);
+  if (num != 0)
+  {
+   inseri_4nodo(&l1i, &l1f, num, &ok);
+   
+   if (ok == 0)
+     printf("\nErro de alocacao de memoria...");
      
-		mostra_lista(l1i);
-		getch();
-		libera_lista(&l1i);
-		getch();
-	}
-	*/
+   mostra_lista(l1i);
+   getch();
+   //libera_lista(&l1i);
+   //getch();
+  }*/
+  
+  
+printf("\nInforme outro valor: (insercao antes do 5): ");
+  scanf("%d",&num);
+  if (num != 0)
+  {
+   inseri_5elemento(&l1i, num, &ok);
+   
+   if (ok == 0)
+     printf("\nErro de alocacao de memoria...");
+     
+   mostra_lista(l1i);
+   getch();
+   libera_lista(&l1i);
+   getch();
+  }
 }
