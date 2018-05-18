@@ -1,9 +1,9 @@
 /*
 Exemplo: Escreva um programa que leia dez valores inteiros e armazene em uma lista
 simplesmente encadeada. Depois remova o primeiro elemento da lista e leia um
-novo valor, que deve ser inserido antes do nodo que contém o maior elemento
-da lista (escreva uma função para descobrir o maior elemento da lista). No final,
-mostre todos os valores armazenados na lista e então a libere.
+novo valor, que deve ser inserido antes do nodo que contÃ©m o maior elemento
+da lista (escreva uma funÃ§Ã£o para descobrir o maior elemento da lista). No final,
+mostre todos os valores armazenados na lista e entÃ£o a libere.
 */
 
 #include<stdio.h>   // printf();
@@ -23,11 +23,11 @@ void cria_lista(struct nodo **inicio, struct nodo **fim) {
 }
 
 void insere_esquerda(struct nodo **inicio, struct nodo **fim, int valor, int *status) {
-	// Utilizaremos a variável p representando um ponteiro.
+	// Utilizaremos a variÃ¡vel p representando um ponteiro.
 	struct nodo *p;
 	p = (struct nodo *) malloc(sizeof(struct nodo));
 	if(p == NULL) {
-		// Se não foi possível alocar espaço em memória.
+		// Se nÃ£o foi possÃ­vel alocar espaÃ§o em memÃ³ria.
 		*status = 0;
 	} else {
 		p->dados = valor;
@@ -43,10 +43,10 @@ void insere_antes_de_k(struct nodo **inicio, struct nodo *k, int valor, int *sta
 	struct nodo *ant, *aux, *p;
 	*status = 0;
 	if(*inicio) {
-		// Se a lista não está vazia.
+		// Se a lista nÃ£o estÃ¡ vazia.
 		aux = *inicio;
 		while((aux != NULL) && (aux != k)) {
-			// Percorre a lista até achar o nodo k ou até chegar ao fim da lista.
+			// Percorre a lista atÃ© achar o nodo k ou atÃ© chegar ao fim da lista.
 			ant = aux;
 			aux = aux->proximo;
 		}
@@ -134,26 +134,26 @@ int main() {
 	// Chama procedimento para criar a lista.
 	cria_lista(&ptri, &ptrf);
 
-	// Lê valores do usuário e armazena na lista.
+	// LÃª valores do usuÃ¡rio e armazena na lista.
 	for(x = 1; x <= max; x++) {
 		printf("Digite um valor qualquer: ");
 		scanf("%i", &num); fflush(stdin);
 		insere_esquerda(&ptri, &ptrf, num, &ok);
 		if (ok == 0)
-			printf("Problema na alocação de memória !!!\n");
+			printf("Problema na alocaÃ§Ã£o de memÃ³ria !!!\n");
 	}
 
 	// Retira o primeiro nodo da lista e escreve na tela.
 	printf("Elemento %i foi removido!!!\n", remove_esquerda(&ptri, &ptrf, &ok));
 
-	// Lê novo valor para inserir na lista.
+	// LÃª novo valor para inserir na lista.
 	printf("Digite um valor qualquer: ");
 	scanf("%i", &num); fflush(stdin);
 
 	// Insere novo elemento na lista.
 	insere_antes_de_k(&ptri, maior(ptri), num, &ok);
 	if (ok == 0)
-		printf("Problema na alocação de memória !!!\n");
+		printf("Problema na alocaÃ§Ã£o de memÃ³ria !!!\n");
 	getch();
 	mostra_lista(ptri);
 	scanf("%i", &num);
