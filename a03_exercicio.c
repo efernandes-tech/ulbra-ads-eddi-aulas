@@ -47,15 +47,15 @@ void insere_antes_de_k (struct nodo **inicio, struct nodo *k, int valor , int *s
 {
   struct nodo *ant, *aux, *p;
    
-  if (*inicio) 		//Se a lista n„o est· vazia
+  if (*inicio) 		//Se a lista n√£o est√° vazia
   {	  p= (struct nodo *) malloc (sizeof(struct nodo));
- 	  if (p == NULL)     //Se n„o foi possÌvel alocar espaÁo em memÛria 
+ 	  if (p == NULL)     //Se n√£o foi poss√≠vel alocar espa√ßo em mem√≥ria 
              *sinal = 0;
           else 
           {
     	    p->dados = valor;
             aux = *inicio;
-            while (aux != k && aux != NULL)  //Percorre a lista atÈ achar o nodo k  ou atÈ chegar ao fim da lista.
+            while (aux != k && aux != NULL)  //Percorre a lista at√© achar o nodo k  ou at√© chegar ao fim da lista.
 		    {   ant = aux;
 		        aux = aux->proximo;
             }
@@ -74,7 +74,7 @@ void insere_antes_de_k (struct nodo **inicio, struct nodo *k, int valor , int *s
 		         *sinal = 1;
        	       }
 	        } 
-            else   		//n„o encontrou k
+            else   		//n√£o encontrou k
 		    {  *sinal= 0;
 		       free(p);
    	        }
