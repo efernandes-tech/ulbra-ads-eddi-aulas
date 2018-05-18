@@ -73,7 +73,7 @@ int main() {
 	// Chama procedimento para criar a pilha.
 	cria_pilha(&topo);
 
-	// Lê valores do usuário e armazena na pilha.
+	// LÃª valores do usuÃ¡rio e armazena na pilha.
 	printf("Inserindo valores na pilha ...\n");
 	for(x = 1; x <= max; x++) {
 		printf("Digite um valor qualquer: ");
@@ -93,7 +93,7 @@ int main() {
 	mostra_pilha(topo);
 	getch();
 
-	// Lé novo valor para inserir na pilha.
+	// LÃ© novo valor para inserir na pilha.
 	printf("\nDigite um valor qualquer: ");
 	scanf("%i", &num);
 	fflush(stdin);
