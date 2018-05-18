@@ -100,7 +100,7 @@ int main() {
 	// Chama procedimento para criar a fila.
 	F = cria_fila(&ok);
 
-	// Lê valores do usuário e armazena na lista.
+	// LÃª valores do usuÃ¡rio e armazena na lista.
 	printf("Inserindo valores na fila ...\n");
 	for(x = 1; x <= max; x++) {
 		printf("Digite um valor qualquer: ");
@@ -119,7 +119,7 @@ int main() {
 	mostra_fila(F);
 	getch();
 
-	// Lê um novo valor para inserir na fila.
+	// LÃª um novo valor para inserir na fila.
 	printf("Digite um valor qualquer: ");
 	scanf("%i", &num);
 	fflush(stdin);
