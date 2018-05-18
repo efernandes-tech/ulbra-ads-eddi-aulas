@@ -1,4 +1,4 @@
-// Grafos por Lista de Adjacência.
+// Grafos por Lista de AdjacÃªncia.
 
 #include<stdio.h>  // printf();
 #include<conio.h>  // getch();
@@ -13,17 +13,17 @@ struct vertice {
     struct vertice *prox_v;
     int v;
     struct adjacente *prox_a;
-}; // Lista de vértices.
+}; // Lista de vÃ©rtices.
 
 struct vertice *grafo;
 
-// Aloca um nodo do tipo vértice.
+// Aloca um nodo do tipo vÃ©rtice.
 struct vertice * aloca_vertice(int v) {
     struct vertice * novo;
 
     novo = (struct vertice *) malloc(sizeof(struct vertice));
 
-    // Atribui o vértice origem para "v".
+    // Atribui o vÃ©rtice origem para "v".
     novo->v = v;
     novo->prox_v = NULL;
     novo->prox_a = NULL;
@@ -37,7 +37,7 @@ struct adjacente * aloca_adjacente(int a) {
 
     novo = (struct adjacente *) malloc(sizeof(struct adjacente));
 
-    // Atribui o vértice adjacente para "a".
+    // Atribui o vÃ©rtice adjacente para "a".
     novo->a = a;
     novo->prox = NULL;
 
@@ -52,59 +52,59 @@ void conecta(struct vertice **grafo, int v1, int v2) {
     if (*grafo == NULL) {
         // Se grafo esta vazio.
         
-        // Cria um nodo do tipo vértice e atribui o endereço do nodo criado para o grafo.
+        // Cria um nodo do tipo vÃ©rtice e atribui o endereÃ§o do nodo criado para o grafo.
         *grafo = aloca_vertice(v1);
         
-        // Cria um nodo do tipo adjacente e atribui o endereço do nodo criado para "novo_a".
+        // Cria um nodo do tipo adjacente e atribui o endereÃ§o do nodo criado para "novo_a".
         novo_a = aloca_adjacente(v2);
     
-        // Conecta o nodo adjacente ao nodo vértice.
+        // Conecta o nodo adjacente ao nodo vÃ©rtice.
         (*grafo)->prox_a = novo_a;
     } else {
         aux = *grafo;
 
-        // Pesquisa na lista de vértices até encontrar o vértice "v1".
+        // Pesquisa na lista de vÃ©rtices atÃ© encontrar o vÃ©rtice "v1".
         while (aux && (aux->v != v1)) {
             ant = aux;
             aux = aux->prox_v;
         }
 
         if (aux == NULL) {
-            // Se não encontrou o vértice na lista de vértices.
+            // Se nÃ£o encontrou o vÃ©rtice na lista de vÃ©rtices.
 
-            novo_v = aloca_vertice(v1); // Aloca vértice.
+            novo_v = aloca_vertice(v1); // Aloca vÃ©rtice.
             novo_a = aloca_adjacente(v2); // Aloca adjacente.
 
-            // Conecta o vértice criado ao final da lista de vértices.            
+            // Conecta o vÃ©rtice criado ao final da lista de vÃ©rtices.            
             ant->prox_v = novo_v;
 
-            // Conecta o vértice adjacente ao vértice v1.
+            // Conecta o vÃ©rtice adjacente ao vÃ©rtice v1.
             novo_v->prox_a = novo_a;
         } else {
-            // Se encontrou o vértice na lista de vértices.
+            // Se encontrou o vÃ©rtice na lista de vÃ©rtices.
 
             if (aux->prox_a == NULL) {
-                // Se o vértice não possui nenhum adjacente.
+                // Se o vÃ©rtice nÃ£o possui nenhum adjacente.
 
                 novo_a = aloca_adjacente(v2); // Aloca adjacente.
 
-                // Conecta o nodo criado ao vértice v1.
+                // Conecta o nodo criado ao vÃ©rtice v1.
                 aux->prox_a = novo_a;
             } else {
-                // Se o vértice já possui algum adjacente.
+                // Se o vÃ©rtice jÃ¡ possui algum adjacente.
                 
                 aux_a = aux->prox_a;
                 
-                // Verifica se v2 já existe na lista de adjacentes de v1.
+                // Verifica se v2 jÃ¡ existe na lista de adjacentes de v1.
                 while (aux_a && (aux_a->a != v2)) {
                     ant_a = aux_a;
                     aux_a = aux_a->prox;
                 }
-                // Se v2 não aparece na lista de adjacentes de v1.
+                // Se v2 nÃ£o aparece na lista de adjacentes de v1.
                 if (aux_a == NULL) {
                     novo_a = aloca_adjacente(v2); // Aloca nodo adjacente.
 
-                    // "ant_a" aponta para o último nodo da lista de adjacentes.
+                    // "ant_a" aponta para o Ãºltimo nodo da lista de adjacentes.
                     // Conecta o nodo adjacente no final da lista de adjacentes de v1.                  
                     ant_a->prox = novo_a;
                 }
@@ -118,29 +118,29 @@ void desconecta(struct vertice *grafo, int v1, int v2) {
     struct adjacente *aux_a, *ant_a;
 
     if (grafo != NULL) {
-        // Se o grafo não estiver vazio. 
+        // Se o grafo nÃ£o estiver vazio. 
         aux = grafo;
         while ((aux != NULL) && (aux->v != v1)) {
-            // Procura v1 na lista de vértices.
-            aux = aux->prox_v; // "aux" aponta para o próximo nodo na lista de vértices.
+            // Procura v1 na lista de vÃ©rtices.
+            aux = aux->prox_v; // "aux" aponta para o prÃ³ximo nodo na lista de vÃ©rtices.
         }
         if (aux != NULL) {
-            // Se encontro v1 na lista de vértices.
+            // Se encontro v1 na lista de vÃ©rtices.
             aux_a = aux->prox_a;
             while (aux_a && (aux_a->a != v2)) {
                 ant_a = aux_a;
                 aux_a = aux_a->prox;
-                // "aux_a" aponta para o próximo nodo na lista de adjacentes.
+                // "aux_a" aponta para o prÃ³ximo nodo na lista de adjacentes.
             }
             if (aux_a != NULL) {
                 // Se encontrou v2 na lista de adjacentes.
                 if (aux->prox_a == aux_a) {
-                    // Se v2 é o primeiro elemento da lista de adjacentes.
+                    // Se v2 Ã© o primeiro elemento da lista de adjacentes.
                     aux->prox_a = aux_a->prox;
-                    // Atualiza o campo prox_a para o endereço do próximo nodo da lista de adjacentes.
+                    // Atualiza o campo prox_a para o endereÃ§o do prÃ³ximo nodo da lista de adjacentes.
                 } else {
                     ant_a->prox = aux_a->prox;
-                    // O campo prox do nodo anterior a v2 aponta para o próximo nodo.
+                    // O campo prox do nodo anterior a v2 aponta para o prÃ³ximo nodo.
                 }
                 free(aux_a);
             }
