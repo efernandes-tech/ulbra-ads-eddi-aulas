@@ -1,10 +1,10 @@
 /*
 Exemplo: Escreva um programa que leia dez valores inteiros e armazene em uma lista
-duplamente encadeada com header (insere no início da lista). Após, remova o
+duplamente encadeada com header (insere no inÃ­cio da lista). ApÃ³s, remova o
 primeiro elemento da lista e leia um novo valor, que deve ser inserido antes do
-nodo que contém o maior elemento da lista (escreva uma função para descobrir
+nodo que contÃ©m o maior elemento da lista (escreva uma funÃ§Ã£o para descobrir
 o maior elemento da lista). No final, mostre todos os valores armazenados na
-lista e então libere a lista.
+lista e entÃ£o libere a lista.
 */
 
 #include<stdio.h>   // printf();
@@ -33,7 +33,7 @@ void cria_header(struct aponta_header **lista) {
 	(*lista)->fim = NULL;
 }
 
-// Inserção de um nodo antes do primeiro nodo da lista (com header).
+// InserÃ§Ã£o de um nodo antes do primeiro nodo da lista (com header).
 void insere_esquerda(struct aponta_header *lista, int valor, int *status) {
 	struct aponta_nodo *p;
 	*status = 0;
@@ -74,7 +74,7 @@ void insere_direita(struct aponta_header *lista, int valor, int *status) {
 	}
 }
 
-// Remove o último nodo da lista.
+// Remove o Ãºltimo nodo da lista.
 int remove_direita(struct aponta_header *lista, int *status) {
 	struct aponta_nodo *aux;
 	int valor;
@@ -124,7 +124,7 @@ int main() {
 	// Chama procedimento para criar a lista.
 	cria_header(&L);
 	
-	// Lê valores do usuário e armazena na lista.
+	// LÃª valores do usuÃ¡rio e armazena na lista.
 	printf("Inserindo valores no inicio da lista ...\n");
 	for(x = 1; x <= max; x++) {
 		printf("Digite um valor qualquer: ");
@@ -139,12 +139,12 @@ int main() {
 	mostra_lista(L);
 	getch();
 	
-	// Retira o último nodo da lista e escreve na tela.
+	// Retira o Ãºltimo nodo da lista e escreve na tela.
 	printf("Valor %i - ultimo nodo - foi removido da lista !!!\n", remove_direita(L, &ok));
 	mostra_lista(L);
 	getch();
 	
-	// Lé novo valor para inserir na lista.
+	// LÃ© novo valor para inserir na lista.
 	printf("Digite um valor qualquer: ");
 	scanf("%i", &num);
 	fflush(stdin);
