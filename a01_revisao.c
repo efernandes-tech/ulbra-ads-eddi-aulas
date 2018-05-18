@@ -1,4 +1,4 @@
-// Éderson Luis dos Reis Fernandes (2N)
+// Ã‰derson Luis dos Reis Fernandes (2N)
 // Funcao = recebe 2 valores e retorna media.
 // Procedimento = recebe media, status e retorna status.
 
