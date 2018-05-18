@@ -1,10 +1,10 @@
 /*
 Exemplo: Escreva um programa que leia dez valores inteiros e armazene em uma lista
-simplesmente encadeada com header (insere no início da lista). Depois, remova
+simplesmente encadeada com header (insere no inÃ­cio da lista). Depois, remova
 o primeiro elemento da lista e leia um novo valor, que deve ser inserido antes do
-nodo que contém o maior elemento da lista (escreva uma função para descobrir
+nodo que contÃ©m o maior elemento da lista (escreva uma funÃ§Ã£o para descobrir
 o maior elemento da lista). No final, mostre todos os valores armazenados na
-lista e então a libere.
+lista e entÃ£o a libere.
 */
 
 #include<stdio.h>   // printf();
@@ -24,7 +24,7 @@ struct aponta_header {
 	struct aponta_nodo *fim;
 };
 
-// Função que recebe uma lista encadeada e retorna o nodo que tem o maior elemento da lista.
+// FunÃ§Ã£o que recebe uma lista encadeada e retorna o nodo que tem o maior elemento da lista.
 struct aponta_nodo * maior(struct aponta_header *nlista) {
 	struct aponta_nodo *p = NULL, *aux;
 	if(nlista->qtde == 0)
@@ -53,15 +53,15 @@ void cria_lista(struct aponta_header **nlista, int *status) {
 		lista->fim = NULL;
 		*status = 1;
 	}
-	// Para retornar o endereço reservado.
+	// Para retornar o endereÃ§o reservado.
 	*nlista = lista;
 }
 
-// Inserção de um nodo antes do primeiro nodo na lista.
+// InserÃ§Ã£o de um nodo antes do primeiro nodo na lista.
 void insere_esquerda(struct aponta_header *nlista, int valor, int *status) {
 	struct aponta_nodo *p;
 	p = (struct aponta_nodo *) malloc(sizeof(struct aponta_nodo));
-	// Se não foi possivel alocar espaço em memória.
+	// Se nÃ£o foi possivel alocar espaÃ§o em memÃ³ria.
 	if(p == NULL)
 		*status = 0;
 	else {
@@ -75,18 +75,18 @@ void insere_esquerda(struct aponta_header *nlista, int valor, int *status) {
 	}
 }
 
-// Inserção de nodo antes do nodo endereçado por k.
+// InserÃ§Ã£o de nodo antes do nodo endereÃ§ado por k.
 void insere_antes_de_k(struct aponta_header *nlista, struct aponta_nodo *k, int valor, int *status) {
 	struct aponta_nodo *aux, *ant, *p;
 	p = (struct aponta_nodo *) malloc(sizeof(struct aponta_nodo));
-	// Se não foi possível alocar espaço em memória.
+	// Se nÃ£o foi possÃ­vel alocar espaÃ§o em memÃ³ria.
 	if(p == NULL)
 		*status = 0;
 	else {
 		p->dados = valor;
 		aux = nlista->inicio;
 		while(aux != NULL && aux != k) {
-			// Percorre a lista até achar o nodo anterior a k.
+			// Percorre a lista atÃ© achar o nodo anterior a k.
 			ant = aux;
 			aux = aux->prox;
 		}
@@ -107,7 +107,7 @@ void insere_antes_de_k(struct aponta_header *nlista, struct aponta_nodo *k, int 
 	}
 }
 
-// Remoção do primeiro nodo.
+// RemoÃ§Ã£o do primeiro nodo.
 int remove_esquerda(struct aponta_header *nlista, int *status) {
 	struct aponta_nodo *p;
 	int valor = 0;
@@ -127,7 +127,7 @@ int remove_esquerda(struct aponta_header *nlista, int *status) {
 	return valor;
 }
 
-// Remoção do último nodo.
+// RemoÃ§Ã£o do Ãºltimo nodo.
 int remove_direita(struct aponta_header *nlista, int *status) {
 	struct aponta_nodo *aux, *p;
 	int valor = 0;
@@ -136,17 +136,17 @@ int remove_direita(struct aponta_header *nlista, int *status) {
 		*status = 0;
 	} else {
 		if(nlista->qtde == 1) {
-			// Lista de um nodo só?
+			// Lista de um nodo sÃ³?
 			p = nlista->inicio;
 			valor = p->dados;
 			free(p);
 			nlista->inicio = NULL;
 			nlista->fim = NULL;
 		} else {
-			p = nlista->inicio; // Descobre o último nodo.
+			p = nlista->inicio; // Descobre o Ãºltimo nodo.
 			aux = nlista->inicio; // Nodo anterior a "p".
-			while(p->prox != NULL) { // Percorre a lista até achar o último nodo.
-				// Percorre a lista até achar o último nodo.
+			while(p->prox != NULL) { // Percorre a lista atÃ© achar o Ãºltimo nodo.
+				// Percorre a lista atÃ© achar o Ãºltimo nodo.
 				aux = p;
 				p = p->prox;
 			}
@@ -161,7 +161,7 @@ int remove_direita(struct aponta_header *nlista, int *status) {
 	return valor;
 }
 
-// Remoção antes do nodo endereçado por k.
+// RemoÃ§Ã£o antes do nodo endereÃ§ado por k.
 int remove_antes_k(struct aponta_header *nlista, struct aponta_nodo *k, int *status) {
 	struct aponta_nodo *aux, *p;
 	int valor = 0;
@@ -174,7 +174,7 @@ int remove_antes_k(struct aponta_header *nlista, struct aponta_nodo *k, int *sta
 		p = nlista->inicio; // Nodo anterior a k.
 		aux = nlista->inicio; // Nodo anterior a p.
 		while(p->prox != k && p != NULL) {
-			// Percorre a lista até achar o nodo k.
+			// Percorre a lista atÃ© achar o nodo k.
 			aux = p;
 			p = p->prox;
 		}
@@ -223,7 +223,7 @@ int main() {
 	// Chama procedimento para criar a lista.
 	cria_lista(&L, &ok);
 	
-	// Lê valores do usuário e armazena na lista.
+	// LÃª valores do usuÃ¡rio e armazena na lista.
 	printf("Inserindo valores no inicio da lista ...\n");
 	for(x = 1; x <= max; x++) {
 		printf("Digite um valor qualquer: ");
@@ -243,7 +243,7 @@ int main() {
 	mostra_lista(L);
 	getch();
 	
-	// Lê novo valor para inserir na lista - valor será armazenado antes do nodo que tem o maior valor.
+	// LÃª novo valor para inserir na lista - valor serÃ¡ armazenado antes do nodo que tem o maior valor.
 	printf("Digite um valor qualquer: ");
 	scanf("%i", &num);
 	fflush(stdin);
@@ -255,7 +255,7 @@ int main() {
 	mostra_lista(L);
 	getch();
 	
-	// Retira o último nodo da lista e o escreve na tela.
+	// Retira o Ãºltimo nodo da lista e o escreve na tela.
 	printf("Valor %i - ultimo nodo - foi removido da lista !!!\n", remove_direita(L, &ok));
 	
 	mostra_lista(L);
